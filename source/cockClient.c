@@ -104,6 +104,7 @@ static void* CcockWrite(void* arg){
 
         // Encrypt the message before sending
         to_send.size = cockEncrypt(buffer, strlen((char*)buffer), key, iv, to_send.encrypted);
+        
         //not Encrypt
         //strncpy(to_send.encrypted, buffer, sizeof(to_send.encrypted));
 

@@ -14,13 +14,13 @@ void cockKeyIv(const char *password, unsigned char *key, unsigned char *iv) {
     
     // Derive the encryption key using PBKDF2
     // Parameters: password, password_len, salt, salt_len, iterations, hash_func, key_len, output
-    if (PKCS5_PBKDF2_HMAC(password, strlen(password), salt, SALT_LENGTH, 10000, EVP_sha256(), AES_KEYLENGTH, key) != 1) {
+    if (PKCS5_PBKDF2_HMAC(password, strlen(password), salt, SALT_LENGTH, 600000, EVP_sha256(), AES_KEYLENGTH, key) != 1) {
         perror("failed to derive key and iv from psw");
         exit(EXIT_FAILURE);
     }
 
     // Derive the initialization vector using the same process
-    if (PKCS5_PBKDF2_HMAC(password, strlen(password), salt, SALT_LENGTH, 10000, EVP_sha256(), AES_BLOCK_SIZE, iv) != 1) {
+    if (PKCS5_PBKDF2_HMAC(password, strlen(password), salt, SALT_LENGTH, 600000, EVP_sha256(), AES_BLOCK_SIZE, iv) != 1) {
         perror("failed to derive key and iv from psw");
         exit(EXIT_FAILURE);
     }
